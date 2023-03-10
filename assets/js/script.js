@@ -1,3 +1,6 @@
+//Stock Functionality Code
+
+
 //Stock Global Variables
 
 let stockEl = document.getElementById('nasdaq');
