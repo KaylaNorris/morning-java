@@ -24,7 +24,7 @@
                         Get it to go
                     </p>
                 </div>
-                <p class="title level-right">
+                <p id="time" class="title level-right">
                     Time
                 </p>
 
@@ -67,8 +67,32 @@
                 </div>
             </div>
             <div class="tile is-6 is-vertical is-parent">
-                <div class="tile is-child box">
+                <div id="weatherContainer" class="tile is-child box">
                     <p class="title">5-day Forecast</p>
+                    <div class="field">
+                        <label class="label">Enter City:</label>
+                        <div class="control">
+                            <input id="city" class="input">
+                        </div>
+                    </div>
+                    <button id="weatherButton" type="submit" class="button is-primary">Submit</button>
+                    <div class="level">
+                        <div id="day0" class="box is-hidden">
+
+                        </div>
+                        <div id="day1" class="box is-hidden">
+
+                        </div>
+                        <div id="day2" class="box is-hidden">
+
+                        </div>
+                        <div id="day3" class="box is-hidden">
+
+                        </div>
+                        <div id="day4" class="box is-hidden">
+
+                        </div>
+                    </div>
                 </div>
                 <div class="tile is-child box">
                     <p class="title">Traffic</p>
