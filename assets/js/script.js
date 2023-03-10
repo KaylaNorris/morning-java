@@ -1,0 +1,81 @@
+let timeEl=document.querySelector('#time')
+timeEl.textContent = dayjs().format('MMM D, YYYY');
+
+//Weather Forecast Code
+let weatherContainer = document.querySelector('#weatherContainer')
+let weatherCity = document.querySelector('#city')
+let dayContainer0 = document.querySelector('#day0')
+let dayContainer1 = document.querySelector('#day1')
+let dayContainer2 = document.querySelector('#day2')
+let dayContainer3 = document.querySelector('#day3')
+let dayContainer4 = document.querySelector('#day4')
+
+let dayContainersArray = [
+    dayContainer0,
+    dayContainer1,
+    dayContainer2,
+    dayContainer3,
+    dayContainer4
+]
+
+let weatherBtn = document.querySelector('#weatherButton')
+
+function start(event) {
+    event.preventDefault()
+
+    let city = weatherCity.value
+    getWeatherForecast(city)
+
+}
+
+function getWeatherForecast(city) {
+    var apiUrl = 'http://api.openweathermap.org/data/2.5/forecast?q=' + city + '&units=imperial&appid=b26ef5e661df23ce4ce2891ab8eebc4d'
+
+    fetch(apiUrl)
+        .then(function (response) {
+            return response.json()
+        }).then(function (data) {
+            console.log(data)
+
+            dayContainer0.innerHTML = '';
+            dayContainer1.innerHTML = '';
+            dayContainer2.innerHTML = '';
+            dayContainer3.innerHTML = '';
+            dayContainer4.innerHTML = '';
+
+            for (let i = 0; i < 5; i++) {
+                let dateEl = document.createElement('h3')
+                dateEl.textContent = dayjs().add(i, 'day').format('MMM D, YYYY')
+                let currentContainer = dayContainersArray[i]
+                currentContainer.append(dateEl)
+
+
+                let imgCode = data.list[i].weather[0].icon
+                let imgUrl = "http://openweathermap.org/img/w/" + imgCode + ".png";
+                let imgEl = document.createElement('div')
+                let img = document.createElement('img')
+                img.setAttribute('src', imgUrl)
+                imgEl.appendChild(img)
+                currentContainer.append(imgEl)
+
+                let tempEl = document.createElement('p')
+                tempEl.textContent = ("Temp: " + data.list[i].main.temp + " F")
+                currentContainer.append(tempEl)
+
+                let humidityEl = document.createElement('p')
+                humidityEl.textContent = ("Humidity: " + data.list[i].main.humidity + "%")
+                currentContainer.append(humidityEl)
+
+                let windEl = document.createElement('p')
+                windEl.textContent = ("Wind: " + data.list[i].wind.speed + " MPH")
+                currentContainer.append(windEl)
+                console.log(currentContainer)
+
+                currentContainer.classList.remove('is-hidden')
+                
+            }
+        })
+
+}
+weatherBtn.addEventListener('click', start)
+//End Weather Forecast Code
