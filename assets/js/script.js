@@ -1,4 +1,3 @@
-Danny
 let timeEl=document.querySelector('#time')
 timeEl.textContent = dayjs().format('MMM D, YYYY');
 
@@ -113,7 +112,6 @@ function saveNote() {
     });
 }
 saveNote();
- HEAD
 //Stock Functionality Code
 
 
@@ -178,5 +176,3 @@ stockButton.addEventListener('click', function () {
 
 
 })
- main
- dff68e08514a8a5d491688a0f054cbb055aa7d0b
