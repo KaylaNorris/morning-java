@@ -1,4 +1,4 @@
- Danny
+
 let timeEl=document.querySelector('#time')
 timeEl.textContent = dayjs().format('MMM D, YYYY');
 
@@ -30,7 +30,7 @@ function start(event) {
 }
 
 function getWeatherForecast(city) {
-    var apiUrl = 'http://api.openweathermap.org/data/2.5/forecast?q=' + city + '&units=imperial&appid=b26ef5e661df23ce4ce2891ab8eebc4d'
+    var apiUrl = 'https://api.openweathermap.org/data/2.5/forecast?q=' + city + '&units=imperial&appid=b26ef5e661df23ce4ce2891ab8eebc4d'
 
     fetch(apiUrl)
         .then(function (response) {
@@ -52,7 +52,7 @@ function getWeatherForecast(city) {
 
 
                 let imgCode = data.list[i].weather[0].icon
-                let imgUrl = "http://openweathermap.org/img/w/" + imgCode + ".png";
+                let imgUrl = "https://openweathermap.org/img/w/" + imgCode + ".png";
                 let imgEl = document.createElement('div')
                 let img = document.createElement('img')
                 img.setAttribute('src', imgUrl)
@@ -80,7 +80,7 @@ function getWeatherForecast(city) {
 }
 weatherBtn.addEventListener('click', start)
 //End Weather Forecast Code
-=======
+
 function getQuote() {
     var queryURL = "https://api.themotivate365.com/stoic-quote"
     fetch(queryURL)
@@ -113,4 +113,3 @@ function saveNote() {
     });
 }
 saveNote();
- main
