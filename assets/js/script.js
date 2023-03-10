@@ -14,14 +14,14 @@ stockButton.addEventListener('click', function () {
             return response.json();
         })
         .then(function (data) {
-            console.log (data)
+            console.log(data)
             let stockVal = stockText.value
-            for (i=0; i<data.length; i++) {
+            for (i = 0; i < data.length; i++) {
                 let ranName = Math.floor(Math.random() * i)
                 let helpMe = data[ranName].name
                 if (helpMe.indexOf(stockVal) != -1) {
                     var stockID = data[ranName].symbol
-                    
+
                     //Second API Code
 
                     let stockAPITwo = 'https://financialmodelingprep.com/api/v3/quote/' + stockID + '?apikey=a5f18dde834ae8efbaf1f45490e8b1ff'
@@ -36,20 +36,20 @@ stockButton.addEventListener('click', function () {
                             }
                             // console.log(data)
                             // console.log(stockText.value)
-                                removeIfExists('#nasdaq div')
-                                var spanOne = document.createElement('div')
-                                var spanTwo = document.createElement('div')
-                                spanOne.textContent = data[0].name;
-                                spanTwo.textContent = data[0].change;
-                                stockEl.appendChild(spanOne)
-                                spanOne.appendChild(spanTwo)
-                                // console.log(spanOne)
-                                if (data[0].change <= 0){
-                                    spanTwo.style.color = 'red'
-                                } else if (data[0].change >= 0){
-                                    spanTwo.style.color = 'green'
-                                }
-                                
+                            removeIfExists('#nasdaq div')
+                            var spanOne = document.createElement('div')
+                            var spanTwo = document.createElement('div')
+                            spanOne.textContent = data[0].name;
+                            spanTwo.textContent = data[0].change;
+                            stockEl.appendChild(spanOne)
+                            spanOne.appendChild(spanTwo)
+                            // console.log(spanOne)
+                            if (data[0].change <= 0) {
+                                spanTwo.style.color = 'red'
+                            } else if (data[0].change >= 0) {
+                                spanTwo.style.color = 'green'
+                            }
+
                         });
                 } else {
                     stockText.value = 'Enter Valid Name';
