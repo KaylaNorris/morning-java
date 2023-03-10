@@ -36,7 +36,31 @@
         <div class="tile is-ancestor">
             <div class="tile is-3 is-vertical is-parent">
                 <div class="tile is-child box">
-                    <p class="title">Personal Info</p>
+                    <div class="card">
+                        <div class="card-content">
+                            <p class="title">Stoicism Quote of the Day</p>
+                            <p id="quote" class="title is-4"></p>
+                            <p id="author" class="subtitle is-6"></p>
+                        </div>
+                        <footer class="card-footer mb-5">
+                            <p class="card-footer-item">
+                                <span>
+                                    Open <a href="https://twitter.com">Twitter</a>
+                                </span>
+                            </p>
+                            <p class="card-footer-item">
+                                <span>
+                                    Open <a href="https://facebook.com">Facebook</a>
+                                </span>
+                            </p>
+                        </footer>
+                    </div>
+                    <p class="title is-4">Notes</p>
+                    <div id="notes-box" class="control">
+                        <textarea id="notes-input" class="textarea  mb-3" placeholder="Important numbers, To-do list, etc"></textarea>
+                        <input id="saveBtn" class="button is-primary is-small is-responsive has-text-weight-bold" type="submit"
+                            value="Save input">
+                    </div>
                 </div>
                 <div class="tile is-child box">
                     <p class="title" id="nasdaq">Stocks:</p>
