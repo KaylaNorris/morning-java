@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+body{
+    font-family: 'Quicksand', sans-serif;
+}
+#directions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#directions > div{
+ 
+    padding: 5px;
+    border: solid 1px black;
+    border-radius: 10px;
+}
+
+.scrollDiv{
+    height: 310px;
+    overflow: scroll;
+} */
+ .input-div{
+    display: flex;
+}
