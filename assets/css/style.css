@@ -18,7 +18,7 @@ body{
 .scrollDiv{
     height: 310px;
     overflow: scroll;
-}
-.input-div{
+} */
+ .input-div{
     display: flex;
 }
