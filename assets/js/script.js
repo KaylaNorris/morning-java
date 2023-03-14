@@ -308,20 +308,23 @@ stockButton.addEventListener('click', function () {
 
 
 })
-var requestUrl = "https://newsdata.io/api/1/news?apikey=pub_1874264b56e5b6f62edbe91e49f1a06a72fbb&language=en&category=world";
+//Global News code. First, establishing elements that represent the api request url and elements with the globalNews id.
+var requestUrl = "https://newsdata.io/api/1/news?apikey=pub_1889938827e80fb34d0ecfc6b9a7f2b952495&language=en&category=world";
 let newsHeadlineEl = document.getElementById("globalNews");
+//Fetch request to the api, converting it to json, and properly creating the element before the for loop to ensure it happens once.
 fetch(requestUrl)
     .then(function (response) {
         return response.json();
     })
     .then(function(data) {
         console.log(data);
-        //Display data on HTML page
+        //Display data on HTML page. The api didn't offer the ability to shorten requests so I did it in the for loop. Assigning the json data to elements.
         let headlineOne = document.createElement("div");
        for (i = 0; i < data.results.length-7; i++) {
             console.log(data.results[i].title);
             let url = data.results[i]["link"];
             let title = data.results[i]["title"];
+            //Modifying the created element headlineOne with the news data and appending the creataed elements to the element(newsHeadlineEl) representing elements with the globalNews id
             newsHeadlineEl.appendChild(headlineOne);
             headlineOne.setAttribute('id', 'NewsData');
             if (data.results.length >= 3) {
@@ -331,6 +334,7 @@ fetch(requestUrl)
             $("#NewsData").children("li").eq(i).append("<a href=" + url + ">"+ title +"</a>");
         }
     })
+    //Handling errors
     .catch(function(error) {
         console.log(error);
     });
