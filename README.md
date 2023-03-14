@@ -27,6 +27,8 @@ Collaborators: </br>
 [Melena Grilliot](https://github.com/melenagrilliot) -Navigation </br>
 [Clay Moyer](https://github.com/ClayMoyer) -Global News </br>
 
+Background image credit: https://unsplash.com/photos/vTitvl4O2kE
+
 
 
 ## License
