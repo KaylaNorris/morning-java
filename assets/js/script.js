@@ -1,4 +1,3 @@
-
 let PickBtn = document.getElementById('PickNewsMenu');
 let NewsArea = $('#NewsTxtArea').get(0);
 let boxs = $('#NewsTxtArea');
@@ -31,8 +30,8 @@ let Url = ''
                 $('#NewsData').children('a').attr("href", Url);
 
 
-                $('#NewsData').find('span').addClass('is-size-5 has-text-primary');
-                $('#NewsData').find('a').addClass('is-size-6 has-text-primary');
+                $('#NewsData').find('span').addClass('is-size-5 has-text-link');
+                $('#NewsData').find('a').addClass('is-size-6 has-text-link');
                 break;
             }
         });
