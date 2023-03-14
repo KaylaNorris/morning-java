@@ -3,6 +3,15 @@
 
 <head>
     <title>Morning Java</title>
+    <style>
+        body {
+          background-image: url("./assets/images/sunrise.jpg");
+          background-position: center center;
+          background-repeat: no-repeat;
+          background-size: cover;
+          background-attachment: fixed;
+        }
+        </style>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
@@ -12,9 +21,8 @@
 </head>
 
 <body>
-
     <header>
-        <section class="hero is-small is-primary">
+        <section class="hero is-small is-info">
             <div class="level hero-body">
                 <div>
                     <p class="title">
@@ -31,11 +39,14 @@
             </div>
         </section>
     </header>
+
+   
     
     <main>
-        <div class="tile is-ancestor">
+        
+        <div class="tile is-ancestor mt-5 mb-5 ml-5 mr-5">
             <div class="tile is-3 is-vertical is-parent">
-                <div class="tile is-child box">
+                <div class="tile is-child notification">
                     <div class="card">
                         <div class="card-content">
                             <p class="title">Stoicism Quote of the Day</p>
@@ -55,26 +66,26 @@
                             </p>
                         </footer>
                     </div>
-                    <p class="title is-4">Notes</p>
+                    <p class="title t is-4">Notes</p>
                     <div id="notes-box" class="control">
                         <textarea id="notes-input" class="textarea  mb-3" placeholder="Important numbers, To-do list, etc"></textarea>
-                        <input id="saveBtn" class="button is-primary is-small is-responsive has-text-weight-bold" type="submit"
+                        <input id="saveBtn" class="button is-info is-small is-responsive has-text-weight-bold" type="submit"
                             value="Save input">
                     </div>
                 </div>
-                <div class="tile is-child box">
+                <div class="tile is-child notification">
                     <p class="title" id="nasdaq">Stocks:</p>
                     <p class='title' id="dowjones"></p>
                     <form>
                     <label for="stockname">Stock Name:</label>
                     <input type="text" id="stocktext">
-                    <input type="button" class= 'button is-primary is-small'value="Search" id="stockbutton">
+                    <input type="button" class= 'button is-info is-small'value="Search" id="stockbutton">
                     </form>
                     
                 </div>
             </div>
             <div class="tile is-6 is-vertical is-parent">
-                <div id="weatherContainer" class="tile is-child box">
+                <div id="weatherContainer" class="tile is-child notification">
                     <p class="title">5-day Forecast</p>
                     <div class="field">
                         <label class="label">Enter City:</label>
@@ -82,7 +93,7 @@
                             <input id="city" class="input">
                         </div>
                     </div>
-                    <button id="weatherButton" type="submit" class="button is-primary">Submit</button>
+                    <button id="weatherButton" type="submit" class="button is-info">Submit</button>
                     <div class="level">
                         <div id="day0" class="box is-hidden">
 
@@ -101,7 +112,7 @@
                         </div>
                     </div>
                 </div>
-                <div id="trafficDiv"class="tile is-child box">
+                <div id="trafficDiv"class="tile is-child notification">
                     <div class="scrollDiv">
                         <p class="title">Directions</p>
                         <form action="" id="directionsForm">
@@ -114,7 +125,7 @@
                                 <input type="text" id="dest">
 
                             </div>
-                        <input id="trafficSub" type="submit" class= 'button is-primary is-small' value="Submit">
+                        <input id="trafficSub" type="submit" class= 'button is-info is-small' value="Submit">
                         </form>
                         <h4>  Directions </h4>
                         <div id="directions">
@@ -124,16 +135,26 @@
                 </div>
                 </div>
             <div class="tile is-3 is-vertical is-parent" id="LocalNewsBox">
-                <div class="tile is-child box" id="NewsTxtArea">
+                <div class="tile is-child notification" id="NewsTxtArea">
                     <p class="title">US. News</p>
                 </div>
-                <div class="tile is-child box">
+                <div class="tile is-child notification">
                     <p class="title">Global News</p>
                 </div>
             </div>
 
         </div>
     </main>
+
+    <footer class="footer has-text-weight-semibold has-text-white has-background-info mt-4">
+        <div class="content has-text-centered">
+          <p>
+            <strong>Morning Java</strong> by Team4. The source code is licensed
+            <a href="http://opensource.org/licenses/mit-license.php">MIT</a>.
+          </p>
+        </div>
+      </footer>
+
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="./assets/js/script.js"></script>
 </body>
