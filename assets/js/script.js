@@ -309,3 +309,30 @@ stockButton.addEventListener('click', function () {
 
 
 })
+var requestUrl = "https://newsdata.io/api/1/news?apikey=pub_1874264b56e5b6f62edbe91e49f1a06a72fbb&language=en&category=world";
+let newsHeadlineEl = document.getElementById("globalNews");
+fetch(requestUrl)
+    .then(function (response) {
+        return response.json();
+    })
+    .then(function(data) {
+        console.log(data);
+        //Display data on HTML page
+        let headlineOne = document.createElement("div");
+       for (i = 0; i < data.results.length-7; i++) {
+            console.log(data.results[i].title);
+            let url = data.results[i]["link"];
+            let title = data.results[i]["title"];
+            newsHeadlineEl.appendChild(headlineOne);
+            headlineOne.setAttribute('id', 'NewsData');
+            if (data.results.length >= 3) {
+                let listEl = document.createElement("li");
+                 $("#NewsData").append(listEl)
+                }
+            $("#NewsData").children("li").eq(i).append("<a href=" + url + ">"+ title +"</a>");
+        }
+    })
+    .catch(function(error) {
+        console.log(error);
+    });
+
