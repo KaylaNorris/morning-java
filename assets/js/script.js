@@ -327,12 +327,12 @@ fetch(requestUrl)
             let title = data.results[i]["title"];
             //Modifying the created element headlineOne with the news data and appending the creataed elements to the element(newsHeadlineEl) representing elements with the globalNews id
             newsHeadlineEl.appendChild(headlineOne);
-            headlineOne.setAttribute('id', 'NewsData');
+            headlineOne.setAttribute('id', 'newsGlobal');
             if (data.results.length >= 3) {
                 let listEl = document.createElement("li");
-                 $("#NewsData").append(listEl)
+                 $("#newsGlobal").append(listEl)
                 }
-            $("#NewsData").children("li").eq(i).append("<a href=" + url + ">"+ title +"</a>");
+            $("#newsGlobal").children("li").eq(i).append("<a href=" + url + ">"+ title +"</a>");
         }
     })
     //Handling errors
