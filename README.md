@@ -2,7 +2,7 @@
 
 
 ## Description
-This application was made for the conscientious individual to be able to have access to the information needed to start their day. We wanted to give access to US and global news, weather, stocks, and navigation. A tile with a motivational quote and notes section was also added. 
+This application was made for the conscientious individual to be able to have access to the information needed to start their day. We wanted to give access to US and global news, weather, stocks, and navigation. A tile with a motivational quote, links to social media, and a notes section was also added. 
 
 ## Installation
 
@@ -19,13 +19,13 @@ A random Stoicism quote is displayed upon loading the application. Below it is a
  https://kaylanorris.github.io/morning-java/
 
 ## Credits
-Collaborators:
-[Danny Clark](https://github.com/djamesclark) -Weather
-[Joseph Flynn](https://github.com/Alphastranger) -Stocks
-[Kayla Norris](https://github.com/KaylaNorris) -Daily Quote/Notes
-[Matt Hough](https://github.com/MatthewH2001) -US News
-[Melena Grilliot](https://github.com/melenagrilliot) -Navigation
-[Clay Moyer](https://github.com/ClayMoyer) -Global News
+Collaborators: </br>
+[Danny Clark](https://github.com/djamesclark) -Weather <br/>
+[Joseph Flynn](https://github.com/Alphastranger) -Stocks </br>
+[Kayla Norris](https://github.com/KaylaNorris) -Daily Quote/Notes </br> 
+[Matt Hough](https://github.com/MatthewH2001) -US News </br> 
+[Melena Grilliot](https://github.com/melenagrilliot) -Navigation </br>
+[Clay Moyer](https://github.com/ClayMoyer) -Global News </br>
 
 
 
