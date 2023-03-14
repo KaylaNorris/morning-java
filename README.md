@@ -20,7 +20,7 @@ A random Stoicism quote is displayed upon loading the application. Below it is a
 
 ## Credits
 Collaborators:
-[Danny Clark](https://github.com/djamesclark) -Weather. 
+[Danny Clark](https://github.com/djamesclark) -Weather. return
 [Joseph Flynn](https://github.com/Alphastranger) -Stocks. 
 [Kayla Norris](https://github.com/KaylaNorris) -Daily Quote/Notes. 
 [Matt Hough](https://github.com/MatthewH2001) -US News. 
