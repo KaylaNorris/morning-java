@@ -334,12 +334,12 @@ fetch(requestUrl)
             let title = data.results[i]["title"];
             //Modifying the created element headlineOne with the news data and appending the creataed elements to the element(newsHeadlineEl) representing elements with the globalNews id
             newsHeadlineEl.appendChild(headlineOne);
-            headlineOne.setAttribute('id', 'NewsData');
+            headlineOne.setAttribute('id', 'globalNews');
             if (data.results.length >= 3) {
                 let listEl = document.createElement("li");
-                $("#NewsData").append(listEl)
+                $("#globalNews").append(listEl)
             }
-            $("#NewsData").children("li").eq(i).append("<a href=" + url1 + ">" + title + "</a>");
+            $("#globalNews").children("li").eq(i).append("<a href=" + url1 + ">" + title + "</a>");
         }
     })
 
