@@ -1,3 +1,42 @@
+
+let PickBtn = document.getElementById('PickNewsMenu');
+let NewsArea = $('#NewsTxtArea').get(0);
+let boxs = $('#NewsTxtArea');
+
+let Title = ''
+let Desc = ''
+let Url = ''
+
+    let apikey1 = 'b70ba63684612fa2c72f98547c0e8bb8';
+    url = 'https://gnews.io/api/v4/search?q=example&lang=en&country=us&max=10&apikey=' + apikey1;
+
+    fetch(url)
+     .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+
+            articles = data.articles;
+
+            for (i = 0; i < articles.length; i++) {
+
+                Title = articles[i]['title']
+                Desc = articles[i]['description']
+                Url = articles[i]['url'];
+
+                boxs.append('<ul id="NewsData"> <li><span>Title:</span></li> <li><span>Description:</span></li> <a></a> </ul>');
+                $('#NewsData').children('li').eq(0).append( Title);
+                $('#NewsData').children('li').eq(1).append( Desc);
+                $('#NewsData').children('a').append('<a href=' + Url + '>Read it here!</a>');
+                $('#NewsData').children('a').attr("href", Url);
+
+
+                $('#NewsData').find('span').addClass('is-size-5 has-text-primary');
+                $('#NewsData').find('a').addClass('is-size-6 has-text-primary');
+                break;
+            }
+        });
+
 var trafficel=document.getElementById("trafficDiv")
 var trafficSub=document.getElementById("trafficSub")
 var trafficstart=document.getElementById("start")
@@ -270,20 +309,23 @@ stockButton.addEventListener('click', function () {
 
 
 })
-var requestUrl = "https://newsdata.io/api/1/news?apikey=pub_1874264b56e5b6f62edbe91e49f1a06a72fbb&language=en&category=world";
+//Global News code. First, establishing elements that represent the api request url and elements with the globalNews id.
+var requestUrl = "https://newsdata.io/api/1/news?apikey=pub_1889938827e80fb34d0ecfc6b9a7f2b952495&language=en&category=world";
 let newsHeadlineEl = document.getElementById("globalNews");
+//Fetch request to the api, converting it to json, and properly creating the element before the for loop to ensure it happens once.
 fetch(requestUrl)
     .then(function (response) {
         return response.json();
     })
     .then(function(data) {
         console.log(data);
-        //Display data on HTML page
+        //Display data on HTML page. The api didn't offer the ability to shorten requests so I did it in the for loop. Assigning the json data to elements.
         let headlineOne = document.createElement("div");
        for (i = 0; i < data.results.length-7; i++) {
             console.log(data.results[i].title);
             let url = data.results[i]["link"];
             let title = data.results[i]["title"];
+            //Modifying the created element headlineOne with the news data and appending the creataed elements to the element(newsHeadlineEl) representing elements with the globalNews id
             newsHeadlineEl.appendChild(headlineOne);
             headlineOne.setAttribute('id', 'NewsData');
             if (data.results.length >= 3) {
@@ -293,6 +335,7 @@ fetch(requestUrl)
             $("#NewsData").children("li").eq(i).append("<a href=" + url + ">"+ title +"</a>");
         }
     })
+    //Handling errors
     .catch(function(error) {
         console.log(error);
     });
