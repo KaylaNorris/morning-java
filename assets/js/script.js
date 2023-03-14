@@ -1,135 +1,140 @@
-let PickBtn = document.getElementById('PickNewsMenu');
-let NewsArea = $('#NewsTxtArea').get(0);
-let boxs = $('#NewsTxtArea');
+// let PickBtn = document.getElementById('PickNewsMenu');
+// let NewsArea = $('#NewsTxtArea').get(0);
+// let boxs = $('#NewsTxtArea');
 
-let Title = ''
-let Desc = ''
-let Url = ''
+// let Title = ''
+// let Desc = ''
+// let Url = ''
 
-    let apikey1 = 'b70ba63684612fa2c72f98547c0e8bb8';
-    url = 'https://gnews.io/api/v4/search?q=example&lang=en&country=us&max=10&apikey=' + apikey1;
-
-    fetch(url)
-     .then(function (response) {
-            return response.json();
-        })
-        .then(function (data) {
-
-            articles = data.articles;
-
-            for (i = 0; i < articles.length; i++) {
-
-                Title = articles[i]['title']
-                Desc = articles[i]['description']
-                Url = articles[i]['url'];
-
-                boxs.append('<ul id="NewsData"> <li><span>Title:</span></li> <li><span>Description:</span></li> <a></a> </ul>');
-                $('#NewsData').children('li').eq(0).append( Title);
-                $('#NewsData').children('li').eq(1).append( Desc);
-                $('#NewsData').children('a').append('<a href=' + Url + '>Read it here!</a>');
-                $('#NewsData').children('a').attr("href", Url);
+// let apikey1 = '24c80bebd534b649f31771bdd6d1ce8a';
+// let url = 'https://gnews.io/api/v4/search?q=example&lang=en&country=us&max=10&apikey=' + apikey1;
 
 
-                $('#NewsData').find('span').addClass('is-size-5 has-text-link');
-                $('#NewsData').find('a').addClass('is-size-6 has-text-link');
-                break;
-            }
-        });
 
-var trafficel=document.getElementById("trafficDiv")
-var trafficSub=document.getElementById("trafficSub")
-var trafficstart=document.getElementById("start")
-var trafficdest=document.getElementById("dest")
-let startingAddress = document.getElementById("start") ;
-let endingAddress = document.getElementById("dest") ;
+// fetch(url)
+//     .then(function (res) {
+//         return res.json();
+//     })
+//     .then(function (data1) {
+
+//         let articles = data1.articles;
+
+//         for (i = 0; i < articles.length; i++) {
+
+//             Title = articles[i]['title']
+//             Desc = articles[i]['description']
+//             Url = articles[i]['url'];
+
+//             boxs.append('<ul id="NewsData"> <li><span>Title:</span></li> <li><span>Description:</span></li> <a></a> </ul>');
+//             $('#NewsData').children('li').eq(0).append(Title);
+//             $('#NewsData').children('li').eq(1).append(Desc);
+//             $('#NewsData').children('a').append('<a href=' + Url + '>Read it here!</a>');
+//             $('#NewsData').children('a').attr("href", Url);
+
+
+//             $('#NewsData').find('span').addClass('is-size-5 has-text-link');
+//             $('#NewsData').find('a').addClass('is-size-6 has-text-link');
+//             break;
+//         }
+//     }) 
+//     .then(console.log("here I am"))
+//     .catch((e)=> console.log(e)) ;
+
+
+var trafficel = document.getElementById("trafficDiv")
+var trafficSub = document.getElementById("trafficSub")
+var trafficstart = document.getElementById("start")
+var trafficdest = document.getElementById("dest")
+let startingAddress = document.getElementById("start");
+let endingAddress = document.getElementById("dest");
 let directionsEl = document.getElementById("directions")
-const apikey =  'a81dcab2-4a5d-4d85-bd8c-f1056c905039';
+const apikey = 'a81dcab2-4a5d-4d85-bd8c-f1056c905039';
 
 
-async function getLongLat (address){
-  const query = new URLSearchParams({
-    q: address,
-    locale: 'en',
-    limit: '3',
-    reverse: 'false',
-    debug: 'false',
-    provider: 'default',
-    key: apikey
-  }).toString();
-  const resp = await fetch(
-    `https://graphhopper.com/api/1/geocode?${query}`
-  
-  );
-  
-  const data = await resp.json();
-    console.log("data:",data)  
+async function getLongLat(address) {
+    const query = new URLSearchParams({
+        q: address,
+        locale: 'en',
+        limit: '3',
+        reverse: 'false',
+        debug: 'false',
+        provider: 'default',
+        key: apikey
+    }).toString();
+    const resp = await fetch(
+        `https://graphhopper.com/api/1/geocode?${query}`
+
+    );
+
+    const data = await resp.json();
+    console.log("data:", data)
     return {
-    lat: data.hits[0].point.lat,
-    lng: data.hits[0].point.lng
-  }
+        lat: data.hits[0].point.lat,
+        lng: data.hits[0].point.lng
+    }
 }
 
-async function getDirections (){
+async function getDirections() {
 
-  // startingAddress = trafficstart.value;
-  // endingAddress = trafficdest.value;
-  console.log(startingAddress, endingAddress)
+    // startingAddress = trafficstart.value;
+    // endingAddress = trafficdest.value;
+    console.log(startingAddress, endingAddress)
 
-  const endLL = await getLongLat( endingAddress.value );
+    const endLL = await getLongLat(endingAddress.value);
     const eLat = endLL.lat;
     const eLng = endLL.lng;
 
-    const startLL = await getLongLat( startingAddress.value );
+    const startLL = await getLongLat(startingAddress.value);
     const sLat = startLL.lat;
     const sLng = startLL.lng;
-    
 
-      const pointsArr = [
-        `${sLat},${sLng}`,`${sLat},${sLng}`
-      ]
-    
+
+    const pointsArr = [
+        `${sLat},${sLng}`, `${sLat},${sLng}`
+    ]
+
     const queryString = `profile=car&point=${sLat},${sLng}&point=${eLat},${eLng}&key=a81dcab2-4a5d-4d85-bd8c-f1056c905039`
-    
+
     const resp = await fetch(
-      `https://graphhopper.com/api/1/route?${queryString}`
-      
-    ).catch(err=>console.error(err))
-    
+        `https://graphhopper.com/api/1/route?${queryString}`
+
+    ).catch(err => console.error(err))
+
     const data = await resp.json(); //conerts string to json
-    console.log("final:",data.paths[0].instructions    );
-    let path = data.paths[0].instructions ;
+    console.log("final:", data.paths[0].instructions);
+    let path = data.paths[0].instructions;
 
     path.map(p => {
-      let divEl = document.createElement("div");
-      let wordsEl = document.createElement("p");
-      wordsEl.textContent = p.text;
-      let distEl = document.createElement("p");
-      distEl.textContent = (p.distance / 1609.34).toFixed(2) + " mi";
-      let timeEl = document.createElement("p");
-      timeEl.textContent = Math.floor( (p.time/ 60) / 60) + " min";
+        let divEl = document.createElement("div");
+        let wordsEl = document.createElement("p");
+        wordsEl.textContent = p.text;
+        let distEl = document.createElement("p");
+        distEl.textContent = (p.distance / 1609.34).toFixed(2) + " mi";
+        let timeEl = document.createElement("p");
+        timeEl.textContent = Math.floor((p.time / 60) / 60) + " min";
 
-      divEl.appendChild(wordsEl);
-      divEl.appendChild(distEl);
-      divEl.appendChild(timeEl);
+        divEl.appendChild(wordsEl);
+        divEl.appendChild(distEl);
+        divEl.appendChild(timeEl);
 
-      directionsEl.appendChild(divEl);
+        directionsEl.appendChild(divEl);
 
     })
 
- console.log(data)
+    console.log(data)
 
-return data
+    return data
 }
-trafficSub.addEventListener("click",function(e){
-  e.preventDefault();
-  getDirections().then(res=>console.log(res)).catch(err=>console.error(err))
+trafficSub.addEventListener("click", function (e) {
+    e.preventDefault();
+    getDirections().then(res => console.log(res)).catch(err => console.error(err))
 })
 
-trafficstart.addEventListener("change",function(e){
-console.log(e.target.value)
+trafficstart.addEventListener("change", function (e) {
+    console.log(e.target.value)
 })
 
-let timeEl=document.querySelector('#time')
+let timeEl = document.querySelector('#time')
 timeEl.textContent = dayjs().format('MMM D, YYYY');
 
 //Weather Forecast Code
@@ -203,7 +208,7 @@ function getWeatherForecast(city) {
                 console.log(currentContainer)
 
                 currentContainer.classList.remove('is-hidden')
-                
+
             }
         })
 
@@ -231,14 +236,14 @@ function saveNote() {
     var saveBtn = document.getElementById("saveBtn");
     var notesInput = document.getElementById("notes-input");
     var notes = localStorage.getItem("notes");
-    
+
     notesInput.textContent = notes;
 
     saveBtn.addEventListener("click", function (event) {
         event.preventDefault();
 
         var notesInput = document.getElementById("notes-input").value;
-        
+
         localStorage.setItem("notes", notesInput);
     });
 }
@@ -312,30 +317,34 @@ stockButton.addEventListener('click', function () {
 var requestUrl = "https://newsdata.io/api/1/news?apikey=pub_1889938827e80fb34d0ecfc6b9a7f2b952495&language=en&category=world";
 let newsHeadlineEl = document.getElementById("globalNews");
 //Fetch request to the api, converting it to json, and properly creating the element before the for loop to ensure it happens once.
+
+
 fetch(requestUrl)
     .then(function (response) {
+        console.log(response)
         return response.json();
     })
-    .then(function(data) {
+    .then(function (data) {
         console.log(data);
         //Display data on HTML page. The api didn't offer the ability to shorten requests so I did it in the for loop. Assigning the json data to elements.
         let headlineOne = document.createElement("div");
-       for (i = 0; i < data.results.length-7; i++) {
+        for (i = 0; i < data.results.length - 7; i++) {
             console.log(data.results[i].title);
-            let url = data.results[i]["link"];
+            let url1 = data.results[i]["link"];
             let title = data.results[i]["title"];
             //Modifying the created element headlineOne with the news data and appending the creataed elements to the element(newsHeadlineEl) representing elements with the globalNews id
             newsHeadlineEl.appendChild(headlineOne);
             headlineOne.setAttribute('id', 'NewsData');
             if (data.results.length >= 3) {
                 let listEl = document.createElement("li");
-                 $("#NewsData").append(listEl)
-                }
-            $("#NewsData").children("li").eq(i).append("<a href=" + url + ">"+ title +"</a>");
+                $("#NewsData").append(listEl)
+            }
+            $("#NewsData").children("li").eq(i).append("<a href=" + url1 + ">" + title + "</a>");
         }
     })
+
     //Handling errors
-    .catch(function(error) {
+    .catch(function (error) {
         console.log(error);
     });
 
