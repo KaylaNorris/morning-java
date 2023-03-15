@@ -5,7 +5,7 @@
 This application was made for the conscientious individual to be able to have access to the information needed to start their day. We wanted to give access to US and global news, weather, stocks, and navigation. A tile with a motivational quote, links to social media, and a notes section was also added. 
 
 ## Technologies used
-HTML, CSS, JavaScript, jQuery, and Bulma CSS Framework
+HTML, CSS, JavaScript, jQuery, and Bulma CSS Framework, Graphhopper API, Open Weather Map API, The Motivate 365 API, Financial Modeling Prep API, News Data API, and G News API.
 
 ## Installation
 
